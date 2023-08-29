@@ -25,12 +25,22 @@ class Asignatura {
     private String nombreAsignatura;
     private String nombreProfesor;
     private int creditos;
-
+    private boolean completada;
+    
     public Asignatura(String nombreAsignatura, String nombreProfesor, int creditos) {
         this.nombreAsignatura = nombreAsignatura;
         this.nombreProfesor = nombreProfesor;
         this.creditos = creditos;
     }
+    
+    public void marcarComoCompletada() {
+        completada = true;
+    }
+
+    public boolean isCompletada() {
+        return completada;
+    }
+
 }
 
 class Sistema{
@@ -40,6 +50,8 @@ class Sistema{
         this.alumnos = alumnos;
     }
 }
+
+
 
 
 public class avanceCurricular{
