@@ -5,6 +5,19 @@ class Alumno {
 
     public Alumno(String nombreAlumno, Asignatura[] asignaturas) {
         this.nombreAlumno = nombreAlumno;
+        this.asignaturas = asignaturas;
+    }
+
+    public void agregarAsignaturas(Asignatura nuevaAsignatura) {
+        Asignatura[] nuevasAsignaturas = new Asignatura[asignaturas.length + 1];
+
+        for(int i = 0 ; i < asignaturas.length ; i++) {
+            nuevasAsignaturas[i] = asignaturas[i];
+        }
+
+        nuevasAsignaturas[asignaturas.length] = nuevaAsignatura;
+
+        asignaturas = nuevasAsignaturas;
     }
 }
 
@@ -22,6 +35,10 @@ class Asignatura {
 
 class Sistema{
     private Alumno[] alumnos;
+
+    public Sistema(Alumno[] alumnos) {
+        this.alumnos = alumnos;
+    }
 }
 
 
