@@ -1,6 +1,7 @@
-package proyectoPrograAvanzada;
+import java.util.*;
+
 class Alumno {
-    private String nombreAlumno;
+    public String nombreAlumno;
     private Asignatura[] asignaturas;
 
     public Alumno(String nombreAlumno, Asignatura[] asignaturas) {
@@ -44,11 +45,34 @@ class Asignatura {
 }
 
 class Sistema{
-    private Alumno[] alumnos;
+    private ArrayList<Alumno> alumnos;
+    private HashMap<String, Alumno> mapaAlumnosNombre;
 
-    public Sistema(Alumno[] alumnos) {
-        this.alumnos = alumnos;
+    public Sistema() {
+        alumnos = new ArrayList();
+        mapaAlumnosNombre = new HashMap<>();
     }
+
+    public void agregarAlumno(Alumno nuevoAlumno) {
+        alumnos.add(nuevoAlumno);
+        mapaAlumnosNombre.put(nuevoAlumno.nombreAlumno, nuevoAlumno);
+    }
+
+    public void eliminarAlumno(Alumno alumnoParaEliminar)
+    {
+        alumnos.remove(alumnoParaEliminar);
+        mapaAlumnosNombre.remove(alumnoParaEliminar.nombreAlumno, alumnoParaEliminar);
+    }
+
+    public void listarAlumnosNombre(){
+        Set<String> nombres = mapaAlumnosNombre.keySet();
+
+        for(String nombre : nombres)
+        {
+            System.out.println(nombre);
+        }
+    }
+
 }
 
 
