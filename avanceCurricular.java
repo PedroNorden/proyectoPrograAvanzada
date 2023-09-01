@@ -20,6 +20,46 @@ class Alumno {
 
         asignaturas = nuevasAsignaturas;
     }
+
+}
+
+class Menu {
+    private Alumno alumno;
+    private Scanner scanner;
+
+    public Menu(Alumno alumno) {
+        this.alumno = alumno;
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void mostrarMenuAlumno() {
+        while (true) {
+            System.out.println("Menu del Alumno " + alumno.nombreAlumno + ":");
+            System.out.println("1. Agregar asignatura");
+            System.out.println("2. Salir");
+            System.out.print("Selecciona una opcion: ");
+            int opcion = scanner.nextInt();
+
+            if (opcion == 1) {
+                scanner.nextLine();
+                System.out.print("Ingrese el nombre de la asignatura: ");
+                String nombreAsignatura = scanner.nextLine();
+                System.out.print("Ingrese el nombre del profesor: ");
+                String nombreProfesor = scanner.nextLine();
+                System.out.print("Ingrese la cantidad de créditos: ");
+                int creditos = scanner.nextInt();
+
+                Asignatura nuevaAsignatura = new Asignatura(nombreAsignatura, nombreProfesor, creditos);
+                alumno.agregarAsignaturas(nuevaAsignatura);
+                System.out.println("Asignatura agregada con exito.");
+            } else if (opcion == 2) {
+                System.out.println("Volviendo al menu principal.");
+                break;
+            } else {
+                System.out.println("Opcion inválida. Por favor, elija una opcion valida.");
+            }
+        }
+    }
 }
 
 class Asignatura {
@@ -49,7 +89,7 @@ class Sistema {
     private HashMap<String, Alumno> mapaAlumnosNombre;
 
     public Sistema() {
-        alumnos = new ArrayList();
+        alumnos = new ArrayList<Alumno>();
         mapaAlumnosNombre = new HashMap<>();
     }
 
@@ -79,43 +119,6 @@ class Sistema {
 
 public class avanceCurricular {
     public static void main(String[] args) {
-        Sistema sistema = new Sistema();
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("Menu:");
-            System.out.println("1. Agregar asignatura a alumno");
-            System.out.println("2. Salir");
-            System.out.print("Selecciona una opcion: ");
-            int opcion = scanner.nextInt();
-
-            if (opcion == 1) {
-                scanner.nextLine();
-                System.out.print("Ingrese el nombre del alumno: ");
-                String nombreAlumno = scanner.nextLine();
-
-                Alumno alumno = sistema.obtenerAlumnoPorNombre(nombreAlumno);
-                if (alumno != null) {
-                    System.out.print("Ingrese el nombre de la asignatura: ");
-                    String nombreAsignatura = scanner.nextLine();
-                    System.out.print("Ingrese el nombre del profesor: ");
-                    String nombreProfesor = scanner.nextLine();
-                    System.out.print("Ingrese la cantidad de creditos: ");
-                    int creditos = scanner.nextInt();
-
-                    Asignatura nuevaAsignatura = new Asignatura(nombreAsignatura, nombreProfesor, creditos);
-                    alumno.agregarAsignaturas(nuevaAsignatura);
-                    System.out.println("Asignatura agregada con exito.");
-                } else {
-                    System.out.println("Alumno no encontrado.");
-                }
-            } else if (opcion == 2) {
-                System.out.println("Saliendo del programa.");
-                break;
-            } else {
-                System.out.println("Opcion inválida. Por favor, elija una opción valida.");
-            }
-        }
 
     }
 }
