@@ -2,25 +2,18 @@ import java.util.*;
 
 class Alumno {
     public String nombreAlumno;
-    private Asignatura[] asignaturas;
+    public String rut;
+    private ArrayList<Asignatura> asignaturas;
 
-    public Alumno(String nombreAlumno, Asignatura[] asignaturas) {
+    public Alumno(String nombreAlumno, String rut) {
         this.nombreAlumno = nombreAlumno;
-        this.asignaturas = asignaturas;
+        this.rut = rut;
+        this.asignaturas = new ArrayList<>();
     }
 
     public void agregarAsignaturas(Asignatura nuevaAsignatura) {
-        Asignatura[] nuevasAsignaturas = new Asignatura[asignaturas.length + 1];
-
-        for (int i = 0; i < asignaturas.length; i++) {
-            nuevasAsignaturas[i] = asignaturas[i];
-        }
-
-        nuevasAsignaturas[asignaturas.length] = nuevaAsignatura;
-
-        asignaturas = nuevasAsignaturas;
+        asignaturas.add(nuevaAsignatura);
     }
-
 }
 
 class Menu {
@@ -87,20 +80,24 @@ class Asignatura {
 class Sistema {
     private ArrayList<Alumno> alumnos;
     private HashMap<String, Alumno> mapaAlumnosNombre;
+    private HashMap<String, Alumna> mapaAlumnosRut;
 
     public Sistema() {
         alumnos = new ArrayList<Alumno>();
         mapaAlumnosNombre = new HashMap<>();
+        mapaAlumnosRut = new HashMap<>();
     }
 
     public void agregarAlumno(Alumno nuevoAlumno) {
         alumnos.add(nuevoAlumno);
         mapaAlumnosNombre.put(nuevoAlumno.nombreAlumno, nuevoAlumno);
+        mapaAlumnosRut.put(nuevoAlumno.rut, nuevoAlumno);
     }
 
     public void eliminarAlumno(Alumno alumnoParaEliminar) {
         alumnos.remove(alumnoParaEliminar);
-        mapaAlumnosNombre.remove(alumnoParaEliminar.nombreAlumno, alumnoParaEliminar);
+        mapaAlumnosNombre.remove(alumnoParaEliminar.nombreAlumno);
+        mapaAlumnosRut.remove(alumnoParaEliminar.rut);
     }
 
     public void listarAlumnosNombre() {
@@ -108,6 +105,14 @@ class Sistema {
 
         for (String nombre : nombres) {
             System.out.println(nombre);
+        }
+    }
+
+    public void listarAlumnosRut() {
+        Set<String> ruts = mapaAlumnosRut.keyset();
+
+        for(String rut : ruts) {
+            System.out.println(rut);
         }
     }
 
