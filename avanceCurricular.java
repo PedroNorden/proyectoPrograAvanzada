@@ -80,7 +80,7 @@ class Asignatura {
 class Sistema {
     private ArrayList<Alumno> alumnos;
     private HashMap<String, Alumno> mapaAlumnosNombre;
-    private HashMap<String, Alumna> mapaAlumnosRut;
+    private HashMap<String, Alumno> mapaAlumnosRut;
 
     public Sistema() {
         alumnos = new ArrayList<Alumno>();
@@ -118,6 +118,10 @@ class Sistema {
 
     public Alumno obtenerAlumnoPorNombre(String nombre) {
         return mapaAlumnosNombre.get(nombre);
+    }
+
+    public Alumno obteneAlumnoPorRut(String rut) {
+        return mapaAlumnosRut.get(rut);
     }
 
 }
