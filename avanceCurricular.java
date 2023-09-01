@@ -1,14 +1,24 @@
+package proyectoPrograAvanzada;
+
 import java.util.*;
 
 class Alumno {
-    public String nombreAlumno;
-    public String rut;
+    private String nombreAlumno;
+    private int rut;
     private ArrayList<Asignatura> asignaturas;
 
-    public Alumno(String nombreAlumno, String rut) {
+    public Alumno(String nombreAlumno, int rut) {
         this.nombreAlumno = nombreAlumno;
         this.rut = rut;
         this.asignaturas = new ArrayList<>();
+    }
+
+    public int getRut(){
+        return rut;
+    }
+
+    public String getNombre() {
+        return nombreAlumno;
     }
 
     public void agregarAsignaturas(Asignatura nuevaAsignatura) {
@@ -26,30 +36,32 @@ class Menu {
     }
 
     public void mostrarMenuAlumno() {
-        while (true) {
-            System.out.println("Menu del Alumno " + alumno.nombreAlumno + ":");
+        int opcion = 1;
+        while (opcion != 0) {
+            System.out.println("Menu del Alumno " + alumno.getNombre() + ":");
             System.out.println("1. Agregar asignatura");
-            System.out.println("2. Salir");
+            System.out.println("0. Salir");
             System.out.print("Selecciona una opcion: ");
-            int opcion = scanner.nextInt();
-
-            if (opcion == 1) {
-                scanner.nextLine();
-                System.out.print("Ingrese el nombre de la asignatura: ");
-                String nombreAsignatura = scanner.nextLine();
-                System.out.print("Ingrese el nombre del profesor: ");
-                String nombreProfesor = scanner.nextLine();
-                System.out.print("Ingrese la cantidad de créditos: ");
-                int creditos = scanner.nextInt();
-
-                Asignatura nuevaAsignatura = new Asignatura(nombreAsignatura, nombreProfesor, creditos);
-                alumno.agregarAsignaturas(nuevaAsignatura);
-                System.out.println("Asignatura agregada con exito.");
-            } else if (opcion == 2) {
-                System.out.println("Volviendo al menu principal.");
-                break;
-            } else {
-                System.out.println("Opcion inválida. Por favor, elija una opcion valida.");
+            opcion = scanner.nextInt();
+            switch(opcion){
+                case 1:
+                    scanner.nextLine();
+                    System.out.print("Ingrese el nombre de la asignatura: ");
+                    String nombreAsignatura = scanner.nextLine();
+                    System.out.print("Ingrese el nombre del profesor: ");
+                    String nombreProfesor = scanner.nextLine();
+                    System.out.print("Ingrese la cantidad de créditos: ");
+                    int creditos = scanner.nextInt();
+                    Asignatura nuevaAsignatura = new Asignatura(nombreAsignatura, nombreProfesor, creditos);
+                    alumno.agregarAsignaturas(nuevaAsignatura);
+                    System.out.println("Asignatura agregada con exito.");
+                    break;
+                case 0:
+                    System.out.println("Volviendo al menu principal."); 
+                    break;
+                default:
+                    System.out.println("Opcion inválida. Por favor, elija una opcion valida.");
+                    break;
             }
         }
     }
@@ -80,7 +92,7 @@ class Asignatura {
 class Sistema {
     private ArrayList<Alumno> alumnos;
     private HashMap<String, Alumno> mapaAlumnosNombre;
-    private HashMap<String, Alumno> mapaAlumnosRut;
+    private HashMap<Integer, Alumno> mapaAlumnosRut;
 
     public Sistema() {
         alumnos = new ArrayList<Alumno>();
@@ -90,14 +102,14 @@ class Sistema {
 
     public void agregarAlumno(Alumno nuevoAlumno) {
         alumnos.add(nuevoAlumno);
-        mapaAlumnosNombre.put(nuevoAlumno.nombreAlumno, nuevoAlumno);
-        mapaAlumnosRut.put(nuevoAlumno.rut, nuevoAlumno);
+        mapaAlumnosNombre.put(nuevoAlumno.getNombre(), nuevoAlumno);
+        mapaAlumnosRut.put(nuevoAlumno.getRut(), nuevoAlumno);
     }
 
     public void eliminarAlumno(Alumno alumnoParaEliminar) {
         alumnos.remove(alumnoParaEliminar);
-        mapaAlumnosNombre.remove(alumnoParaEliminar.nombreAlumno);
-        mapaAlumnosRut.remove(alumnoParaEliminar.rut);
+        mapaAlumnosNombre.remove(alumnoParaEliminar.getNombre());
+        mapaAlumnosRut.remove(alumnoParaEliminar.getRut());
     }
 
     public void listarAlumnosNombre() {
@@ -109,18 +121,18 @@ class Sistema {
     }
 
     public void listarAlumnosRut() {
-        Set<String> ruts = mapaAlumnosRut.keyset();
+        Set<Integer> ruts = mapaAlumnosRut.keySet();
 
-        for(String rut : ruts) {
+        for(int rut : ruts) {
             System.out.println(rut);
         }
     }
 
-    public Alumno obtenerAlumnoPorNombre(String nombre) {
+    public Alumno obtenerAlumno(String nombre) {
         return mapaAlumnosNombre.get(nombre);
     }
 
-    public Alumno obteneAlumnoPorRut(String rut) {
+    public Alumno obtenerAlumno(int rut) {
         return mapaAlumnosRut.get(rut);
     }
 
@@ -128,6 +140,10 @@ class Sistema {
 
 public class avanceCurricular {
     public static void main(String[] args) {
-
+        Sistema sistema = new Sistema();
+        Alumno alumno1 = new Alumno("Juan", 12345678);
+        sistema.agregarAlumno(alumno1);
+        Menu menuAlumno1 = new Menu(alumno1);
+        menuAlumno1.mostrarMenuAlumno();
     }
 }
