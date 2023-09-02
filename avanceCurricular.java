@@ -24,6 +24,11 @@ class Alumno {
     public void agregarAsignaturas(Asignatura nuevaAsignatura) {
         asignaturas.add(nuevaAsignatura);
     }
+
+    public ArrayList<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+
 }
 
 class Menu {
@@ -40,6 +45,7 @@ class Menu {
         while (opcion != 0) {
             System.out.println("Menu del Alumno " + alumno.getNombre() + ":");
             System.out.println("1. Agregar asignatura");
+            System.out.println("2. Listar asignaturas");
             System.out.println("0. Salir");
             System.out.print("Selecciona una opcion: ");
             opcion = scanner.nextInt();
@@ -55,6 +61,20 @@ class Menu {
                     Asignatura nuevaAsignatura = new Asignatura(nombreAsignatura, nombreProfesor, creditos);
                     alumno.agregarAsignaturas(nuevaAsignatura);
                     System.out.println("Asignatura agregada con exito.");
+                    break;
+                case 2:
+                    System.out.println("Asignaturas del alumno " + alumno.getNombre() + ":");
+                    String separador = "+---------------------+---------------------+----------+";
+                    System.out.println(separador);
+                    System.out.printf("| %-20s | %-20s | %-8s |\n", "Asignatura", "Profesor", "Créditos");
+                    System.out.println(separador);
+                    for (Asignatura asignatura : alumno.getAsignaturas()) {
+                        String nombre = asignatura.getNombreAsignatura();
+                        String profesor = asignatura.getNombreProfesor();
+                        int creditosAsignatura = asignatura.getCreditos();
+                        System.out.printf("| %-20s | %-20s | %-8d |\n", nombre, profesor, creditosAsignatura);
+                    }
+                    System.out.println(separador);
                     break;
                 case 0:
                     System.out.println("Volviendo al menu principal.");
@@ -87,6 +107,18 @@ class Asignatura {
 
     public boolean isCompletada() {
         return completada;
+    }
+
+    public String getNombreProfesor() {
+        return nombreProfesor;
+    }
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public String getNombreAsignatura() {
+        return nombreAsignatura;
     }
 
 }
@@ -122,7 +154,6 @@ class Sistema {
         }
     }
 
-
     public Alumno obtenerAlumno(String nombre) {
         return mapaAlumnosNombre.get(nombre);
     }
@@ -148,36 +179,54 @@ public class avanceCurricular {
         Alumno alumno4 = new Alumno("Jose", 24681357);
         sistema.agregarAlumno(alumno4);
 
-        System.out.println("Ingrese el nombre o rut (sin puntos ni guion) del alumno que desea buscar: ");
-        String nombreO_RutAlumnoMostrar = scanner.nextLine();
+        int opcionPrincipal = 1;
 
-        Alumno alumnoMostrar = null;
+        while (opcionPrincipal != 0) {
+            System.out.println("Menu Principal:");
+            System.out.println("1. Ingresar a Avance Curricular");
+            System.out.println("0. Salir");
+            System.out.print("Selecciona una opcion: ");
+            opcionPrincipal = scanner.nextInt();
 
-        
-        try {
-            int rut = Integer.parseInt(nombreO_RutAlumnoMostrar);
-            alumnoMostrar = sistema.obtenerAlumno(rut);
-        } catch (NumberFormatException e) {
-            
-            alumnoMostrar = sistema.obtenerAlumno(nombreO_RutAlumnoMostrar);
-        }
+            switch (opcionPrincipal) {
+                case 1:
+                    scanner.nextLine(); // Consumir la nueva línea pendiente
+                    System.out.println("Ingrese el nombre o rut (sin puntos ni guion) del alumno que desea buscar: ");
+                    String nombreO_RutAlumnoMostrar = scanner.nextLine();
 
-        while (alumnoMostrar == null) {
-            System.out.println(
-                    "No se encontro el alumno. Ingrese nuevamente el nombre o rut del alumno que desea buscar: ");
-            nombreO_RutAlumnoMostrar = scanner.nextLine();
-            
-            try {
-                int rut = Integer.parseInt(nombreO_RutAlumnoMostrar);
-                alumnoMostrar = sistema.obtenerAlumno(rut);
-            } catch (NumberFormatException e) {
-                
-                alumnoMostrar = sistema.obtenerAlumno(nombreO_RutAlumnoMostrar);
+                    Alumno alumnoMostrar = null;
+
+                    try {
+                        int rut = Integer.parseInt(nombreO_RutAlumnoMostrar);
+                        alumnoMostrar = sistema.obtenerAlumno(rut);
+                    } catch (NumberFormatException e) {
+                        alumnoMostrar = sistema.obtenerAlumno(nombreO_RutAlumnoMostrar);
+                    }
+
+                    while (alumnoMostrar == null) {
+                        System.out.println(
+                                "No se encontro el alumno. Ingrese nuevamente el nombre o rut del alumno que desea buscar: ");
+                        nombreO_RutAlumnoMostrar = scanner.nextLine();
+
+                        try {
+                            int rut = Integer.parseInt(nombreO_RutAlumnoMostrar);
+                            alumnoMostrar = sistema.obtenerAlumno(rut);
+                        } catch (NumberFormatException e) {
+                            alumnoMostrar = sistema.obtenerAlumno(nombreO_RutAlumnoMostrar);
+                        }
+                    }
+
+                    Menu menuAlumnoMostrar = new Menu(alumnoMostrar);
+                    menuAlumnoMostrar.mostrarMenuAlumno();
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa.");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Por favor, elija una opción válida.");
+                    break;
             }
         }
-
-        Menu menuAlumnoMostrar = new Menu(alumnoMostrar);
-        menuAlumnoMostrar.mostrarMenuAlumno();
 
         scanner.close();
     }
