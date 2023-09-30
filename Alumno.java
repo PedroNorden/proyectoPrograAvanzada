@@ -6,24 +6,15 @@ package com.mycompany.avancecurricular;
 
 import java.util.*;
 
-public class Alumno {
-    private String nombreAlumno;
-    private int rut;
+public class Alumno extends Persona {
+
     private ArrayList<Asignatura> asignaturas;
 
-    public Alumno(String nombreAlumno, int rut) {
-        this.nombreAlumno = nombreAlumno;
-        this.rut = rut;
+    public Alumno(String nombre, int rut) {
+        super(nombre, rut);
         this.asignaturas = new ArrayList<>();
     }
 
-    public int getRut() {
-        return rut;
-    }
-
-    public String getNombre() {
-        return nombreAlumno;
-    }
 
     public void agregarAsignaturas(Asignatura nuevaAsignatura) {
         asignaturas.add(nuevaAsignatura);
