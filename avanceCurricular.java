@@ -5,14 +5,16 @@
  */
 package com.mycompany.avancecurricular;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
-public class main {
-    public static void main(String[] args) {
+public class avanceCurricular {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         Sistema sistema = new Sistema();
 
         Scanner scanner = new Scanner(System.in);
-
+/*
         Alumno alumno1 = new Alumno("Juan", 12345678);
         sistema.agregarAlumno(alumno1);
         Alumno alumno2 = new Alumno("Pedro", 87654321);
@@ -21,7 +23,21 @@ public class main {
         sistema.agregarAlumno(alumno3);
         Alumno alumno4 = new Alumno("Jose", 24681357);
         sistema.agregarAlumno(alumno4);
-
+*/
+        String nombreArchivo = "nombresRut";
+        CSV alumnos = new CSV(nombreArchivo);
+        String linea = alumnos.firstLine();
+        while(linea != null){
+            Persona nuevoAlumno = new Alumno("0",0);
+            nuevoAlumno.setNombre(alumnos.get_csvField(linea, 0));
+            int rut = Integer.parseInt(alumnos.get_csvField(linea, 1));
+            nuevoAlumno.setRut(rut);
+            Alumno nuevo = (Alumno) nuevoAlumno;
+            sistema.agregarAlumno(nuevo);
+            linea = alumnos.nextLine();
+        }
+        
+        
         int opcionPrincipal = 1;
 
         while (opcionPrincipal != 0) {
