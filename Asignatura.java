@@ -6,13 +6,13 @@ package com.mycompany.avancecurricular;
 
 public class Asignatura {
     private String nombreAsignatura;
-    private String nombreProfesor;
+    private Profesor profesor;
     private int creditos;
     private boolean completada;
 
-    public Asignatura(String nombreAsignatura, String nombreProfesor, int creditos) {
+    public Asignatura(String nombreAsignatura, Profesor profesor, int creditos) {
         this.nombreAsignatura = nombreAsignatura;
-        this.nombreProfesor = nombreProfesor;
+        this.profesor = profesor;
         this.creditos = creditos;
     }
 
@@ -24,10 +24,10 @@ public class Asignatura {
         return completada;
     }
 
-    public String getNombreProfesor() {
-        return nombreProfesor;
+    public Profesor getProfesor(){
+        return profesor;
     }
-
+    
     public int getCreditos() {
         return creditos;
     }
