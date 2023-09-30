@@ -16,10 +16,37 @@ public class Alumno extends Persona {
     }
 
 
-    public void agregarAsignaturas(Asignatura nuevaAsignatura) {
+    public Boolean agregarAsignaturas(Asignatura nuevaAsignatura) {
+        if(!asignaturas.contains(nuevaAsignatura)){
+            return false;
+        }
         asignaturas.add(nuevaAsignatura);
+        return true;
     }
 
+    public Boolean desinscribirAsignatura(Asignatura asignaturaADesinscribir)
+    {
+        if(!asignaturas.contains(asignaturaADesinscribir)){
+            return false;
+        }
+        asignaturas.remove(asignaturaADesinscribir);
+        return true;
+    }
+    
+    public Boolean aprobarAsignatura(Asignatura asignaturaAprobada){
+        if(!asignaturas.contains(asignaturaAprobada)){
+            return false;
+        }
+        for(int k = 0; k < asignaturas.size(); k++){
+            
+            if(asignaturaAprobada.getNombreAsignatura().equals(asignaturas.get(k).getNombreAsignatura())){
+                asignaturas.get(k).marcarComoCompletada();
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public ArrayList<Asignatura> getAsignaturas() {
         return asignaturas;
     }
