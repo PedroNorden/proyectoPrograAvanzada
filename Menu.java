@@ -30,10 +30,10 @@ public class Menu {
                     System.out.print("Ingrese el nombre de la asignatura: ");
                     String nombreAsignatura = scanner.nextLine();
                     System.out.print("Ingrese el nombre del profesor: ");
-                    String nombreProfesor = scanner.nextLine();
+                    String nombreProfesor = scanner.nextLine(); //SE  BUSCA EL PROFESOR CON TRY-CATCH
                     System.out.print("Ingrese la cantidad de créditos: ");
                     int creditos = scanner.nextInt();
-                    Asignatura nuevaAsignatura = new Asignatura(nombreAsignatura, nombreProfesor, creditos);
+                    Asignatura nuevaAsignatura = new Asignatura(nombreAsignatura, nombreProfesor, creditos); //CAMBIAR nombreProfesor POR EL PROFESOR ENCONTRADO
                     alumno.agregarAsignaturas(nuevaAsignatura);
                     System.out.println("Asignatura agregada con exito.");
                     break;
@@ -45,7 +45,7 @@ public class Menu {
                     System.out.println(separador);
                     for (Asignatura asignatura : alumno.getAsignaturas()) {
                         String nombre = asignatura.getNombreAsignatura();
-                        String profesor = asignatura.getNombreProfesor();
+                        String profesor = asignatura.getNombreProfesor();   //AQUI TAMBIEN CAMBIAR!!!
                         int creditosAsignatura = asignatura.getCreditos();
                         System.out.printf("| %-20s | %-20s | %-8d |\n", nombre, profesor, creditosAsignatura);
                     }
