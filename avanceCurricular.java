@@ -70,47 +70,49 @@ public class avanceCurricular {
         }
         List<String[]> datos = new ArrayList<>();
         
-        for(Alumno alumno : sistema.getListaAlumnos()){
-            String nombre = alumno.getNombre();
-            String rut = String.valueOf(alumno.getRut());
-            
-            ArrayList<Asignatura> asignaturasList = alumno.getAsignaturas(); // Obtiene la lista de asignaturas
-            StringBuilder asignaturasStringBuilder = new StringBuilder();
-            
-            for (Asignatura asignatura : asignaturasList) {
-                asignaturasStringBuilder.append(asignatura.getNombreAsignatura());
-                asignaturasStringBuilder.append(", "); // Agrega una coma y un espacio
-            }
-            if (!asignaturasList.isEmpty()) {
-                asignaturasStringBuilder.delete(asignaturasStringBuilder.length() - 2, asignaturasStringBuilder.length());
-            }
-            
-            String asignaturas = asignaturasStringBuilder.toString();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/com/mycompany/avancecurricular/nombresRut.csv", true))) {
+            for (Alumno alumno : sistema.getListaAlumnos()) {
+                String nombre = alumno.getNombre();
+                String rut = String.valueOf(alumno.getRut());
 
-            // Crea un arreglo de strings para cada alumno
-            String[] datosAlumno = {nombre, rut, asignaturas};
+                ArrayList<Asignatura> asignaturasList = alumno.getAsignaturas();
+                StringBuilder asignaturasStringBuilder = new StringBuilder();
 
-            // Agrega los datos del alumno a la lista
-            datos.add(datosAlumno);
-            
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/com/mycompany/avancecurricular/nombresRut"))) {
-                for (String[] fila : datos) {
-                    StringBuilder csvLine = new StringBuilder();
-                    for (int i = 0; i < fila.length; i++) {
-                        csvLine.append(fila[i]);
-                        if (i < fila.length - 1) {
-                            csvLine.append(",");
-                        }
-                    }
-                    writer.write(csvLine.toString());
-                    writer.newLine();
+                for (Asignatura asignatura : asignaturasList) {
+                    asignaturasStringBuilder.append(asignatura.getNombreAsignatura());
+                    asignaturasStringBuilder.append(", ");
                 }
 
-            } catch (IOException e) {
-                e.printStackTrace();
+                if (!asignaturasList.isEmpty()) {
+                    asignaturasStringBuilder.delete(asignaturasStringBuilder.length() - 2, asignaturasStringBuilder.length());
+                }
+
+                String asignaturas = asignaturasStringBuilder.toString();
+
+                // Crea un arreglo de strings para cada alumno
+                String[] datosAlumno = {nombre, rut, asignaturas};
+
+                // Agrega los datos del alumno a la lista
+                datos.add(datosAlumno);
             }
+
+            for (String[] fila : datos) {
+                StringBuilder csvLine = new StringBuilder();
+                for (int i = 0; i < fila.length; i++) {
+                    csvLine.append(fila[i]);
+                    if (i < fila.length - 1) {
+                        csvLine.append(",");
+                    }
+                }
+                writer.write(csvLine.toString());
+                writer.newLine();
+            }
+
+            System.out.println("Datos de alumnos exportados a " + "src/main/java/com/mycompany/avancecurricular/nombresRut.csv");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        System.out.println("Datos de alumnos exportados a " + "src/main/java/com/mycompany/avancecurricular/nombresRut");    
+        System.out.println("Datos de alumnos exportados a " + "src/main/java/com/mycompany/avancecurricular/nombresRut.csv");    
         scanner.close();
     }
 }
