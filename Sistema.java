@@ -10,11 +10,13 @@ public class Sistema {
     private ArrayList<Alumno> alumnos;
     private HashMap<String, Alumno> mapaAlumnosNombre;
     private HashMap<Integer, Alumno> mapaAlumnosRut;
+    private ArrayList<Asignatura> ramosDisponibles;
 
     public Sistema() {
         alumnos = new ArrayList<Alumno>();
         mapaAlumnosNombre = new HashMap<>();
         mapaAlumnosRut = new HashMap<>();
+                
     }
 
     public void agregarAlumno(Alumno nuevoAlumno) {
@@ -38,7 +40,14 @@ public class Sistema {
     }
 
     public Alumno obtenerAlumno(String nombre) {
-        return mapaAlumnosNombre.get(nombre);
+    String nombreBuscado = nombre.toLowerCase();
+    for (Alumno alumno : alumnos) {
+        String nombreAlumno = alumno.getNombre().toLowerCase();
+        if (nombreAlumno.equals(nombreBuscado)) {
+            return alumno;
+        }
+    }
+    return null;
     }
 
     public Alumno obtenerAlumno(int rut) {
