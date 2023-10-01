@@ -16,13 +16,21 @@ public class Alumno extends Persona {
     }
 
 
-    public Boolean agregarAsignaturas(Asignatura nuevaAsignatura) {
-        if(!asignaturas.contains(nuevaAsignatura)){
-            return false;
+    public boolean agregarAsignaturas(Asignatura nuevaAsignatura) {
+    for (Asignatura asignatura : asignaturas) {
+        if (asignatura.getCodigoId().equals(nuevaAsignatura.getCodigoId())) {
+            if (!asignatura.isCompletada()) {
+                
+                return false;
+            } else {
+                return false;
+            }
         }
-        asignaturas.add(nuevaAsignatura);
-        return true;
     }
+    asignaturas.add(nuevaAsignatura);
+    
+    return true;
+}
 
     public Boolean desinscribirAsignatura(Asignatura asignaturaADesinscribir)
     {
