@@ -15,8 +15,8 @@ public class Menu {
     public Menu(Alumno alumno) {
         this.alumno = alumno;
         this.scanner = new Scanner(System.in);
-        this.ramosDisponibles = ramosDisponibles; 
-    }
+        this.ramosDisponibles = cargarListaDeRamosDisponiblesDesdeCSV(); 
+    }   
 
     public void mostrarMenuAlumno() {
         int opcion = 1;
@@ -24,7 +24,11 @@ public class Menu {
             System.out.println("Menu del Alumno " + alumno.getNombre() + ":");
             
             mostrarRamosInscritos();
-            
+            int totalCreditos = calcularTotalCreditosAsignaturas();
+            int creditosInscritos = calcularCreditosInscritos();
+            double porcentajeAvance = (creditosInscritos * 100.0) / totalCreditos;
+
+            System.out.printf("| Total de créditos: %-21d | Creditos inscritos %-21d | Porcentaje de avance academico %-1.1f%% |%n", totalCreditos, creditosInscritos, porcentajeAvance);
             System.out.println("1. Inscribir asignatura");
             System.out.println("2. Desinscribir asignatura");
             System.out.println("0. Salir");
@@ -174,6 +178,32 @@ public class Menu {
         } else {
             System.out.println("No se encontró la asignatura con el código ingresado.");
         }
+    }
+    
+    private int calcularTotalCreditosAsignaturas() {
+        int totalCreditos = 0;
+        for (Asignatura asignatura : ramosDisponibles) {
+            totalCreditos += asignatura.getCreditos();
+        }
+        return totalCreditos;
+    }
+    
+    private int calcularCreditosInscritos() {
+        int creditosInscritos = 0;
+        for (Asignatura asignatura : alumno.getAsignaturas()) {
+            creditosInscritos += asignatura.getCreditos();
+        }
+        return creditosInscritos;
+    }
+    
+    private double calcularPorcentajeAvance() {
+        int totalCreditos = calcularTotalCreditosAsignaturas();
+        int creditosInscritos = calcularCreditosInscritos();
+        if (totalCreditos > 0) {
+            return (double) creditosInscritos / totalCreditos * 100;
+        } else {
+            return 0.0;
+        }   
     }
 }
 
