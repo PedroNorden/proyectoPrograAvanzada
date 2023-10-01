@@ -6,9 +6,16 @@ package com.mycompany.avancecurricular;
 
 
 public class Excepciones {
-     public static class AlumnoNoEncontradoException extends Exception {
+    
+    public static class AlumnoNoEncontradoException extends Exception {
         public AlumnoNoEncontradoException(String mensaje) {
-            super("Alumno no encontrado, por favor ingrese nuevamente el nombre o rut");
+            super(mensaje);
+        }
+    }
+     
+    public class OpcionInvalidaException extends Exception {
+        public OpcionInvalidaException(String mensaje) {
+            super(mensaje);
         }
     }
     
