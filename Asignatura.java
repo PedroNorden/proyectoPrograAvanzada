@@ -5,17 +5,23 @@
 package com.mycompany.avancecurricular;
 
 public class Asignatura {
+    private String codigoId;
     private String nombreAsignatura;
-    private Profesor profesor;
+    private String profesor;
     private int creditos;
     private boolean completada;
 
-    public Asignatura(String nombreAsignatura, Profesor profesor, int creditos) {
+    public Asignatura(String codigoId, String nombreAsignatura, String profesor, int creditos) {
+        this.codigoId = codigoId;
         this.nombreAsignatura = nombreAsignatura;
         this.profesor = profesor;
         this.creditos = creditos;
     }
 
+    public String getCodigoId() {
+        return codigoId;
+    }
+    
     public void marcarComoCompletada() {
         completada = true;
     }
@@ -24,7 +30,7 @@ public class Asignatura {
         return completada;
     }
 
-    public Profesor getProfesor(){
+    public String getProfesor(){
         return profesor;
     }
     
