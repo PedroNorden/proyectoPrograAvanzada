@@ -8,8 +8,9 @@ package com.mycompany.avancecurricular;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
+import java.io.*;
 
-public class main {
+public class avanceCurricular {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Sistema sistema = new Sistema();
         Scanner scanner = new Scanner(System.in);
@@ -67,7 +68,49 @@ public class main {
                     break;
             }
         }
+        List<String[]> datos = new ArrayList<>();
+        
+        for(Alumno alumno : sistema.getListaAlumnos()){
+            String nombre = alumno.getNombre();
+            String rut = String.valueOf(alumno.getRut());
+            
+            ArrayList<Asignatura> asignaturasList = alumno.getAsignaturas(); // Obtiene la lista de asignaturas
+            StringBuilder asignaturasStringBuilder = new StringBuilder();
+            
+            for (Asignatura asignatura : asignaturasList) {
+                asignaturasStringBuilder.append(asignatura.getNombreAsignatura());
+                asignaturasStringBuilder.append(", "); // Agrega una coma y un espacio
+            }
+            if (!asignaturasList.isEmpty()) {
+                asignaturasStringBuilder.delete(asignaturasStringBuilder.length() - 2, asignaturasStringBuilder.length());
+            }
+            
+            String asignaturas = asignaturasStringBuilder.toString();
 
+            // Crea un arreglo de strings para cada alumno
+            String[] datosAlumno = {nombre, rut, asignaturas};
+
+            // Agrega los datos del alumno a la lista
+            datos.add(datosAlumno);
+            
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/com/mycompany/avancecurricular/nombresRut"))) {
+                for (String[] fila : datos) {
+                    StringBuilder csvLine = new StringBuilder();
+                    for (int i = 0; i < fila.length; i++) {
+                        csvLine.append(fila[i]);
+                        if (i < fila.length - 1) {
+                            csvLine.append(",");
+                        }
+                    }
+                    writer.write(csvLine.toString());
+                    writer.newLine();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Datos de alumnos exportados a " + "src/main/java/com/mycompany/avancecurricular/nombresRut");    
         scanner.close();
     }
 }
