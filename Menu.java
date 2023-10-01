@@ -195,15 +195,5 @@ public class Menu {
         }
         return creditosInscritos;
     }
-    
-    private double calcularPorcentajeAvance() {
-        int totalCreditos = calcularTotalCreditosAsignaturas();
-        int creditosInscritos = calcularCreditosInscritos();
-        if (totalCreditos > 0) {
-            return (double) creditosInscritos / totalCreditos * 100;
-        } else {
-            return 0.0;
-        }   
-    }
 }
 
