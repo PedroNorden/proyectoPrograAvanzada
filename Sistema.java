@@ -54,5 +54,8 @@ public class Sistema {
         return mapaAlumnosRut.get(rut);
     }
 
+    public ArrayList<Alumno> getListaAlumnos(){
+        return alumnos;
+    }
 }
 
