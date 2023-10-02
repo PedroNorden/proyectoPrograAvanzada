@@ -9,10 +9,11 @@ import java.util.*;
 public class Alumno extends Persona {
 
     private ArrayList<Asignatura> asignaturas;
-
+    private ArrayList<String> nombreAsignaturas;
     public Alumno(String nombre, int rut) {
         super(nombre, rut);
         this.asignaturas = new ArrayList<>();
+        this.nombreAsignaturas = new ArrayList<>();
     }
 
 
@@ -30,8 +31,18 @@ public class Alumno extends Persona {
     asignaturas.add(nuevaAsignatura);
     
     return true;
-}
-
+    }
+    
+    public boolean agregarAsignaturas(String nombreAsignatura){
+        for(String nombre : nombreAsignaturas){
+            if(nombre.equals(nombreAsignatura)){
+                return false;
+            }
+        }
+        nombreAsignaturas.add(nombreAsignatura);
+        return true;
+    }
+    
     public Boolean desinscribirAsignatura(Asignatura asignaturaADesinscribir)
     {
         if(!asignaturas.contains(asignaturaADesinscribir)){
@@ -53,6 +64,10 @@ public class Alumno extends Persona {
             }
         }
         return false;
+    }
+    
+    public ArrayList<String> getNombresAsignaturas(){
+        return nombreAsignaturas;
     }
     
     public ArrayList<Asignatura> getAsignaturas() {
