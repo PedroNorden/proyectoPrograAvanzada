@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.mycompany.avancecurricular">
+  <ClassDiagramComponents>
+    <Class name="Alumno" package="com.mycompany.avancecurricular" visibility="public" xPosition="5.0" yPosition="369.0">
+      <Fields>
+        <Field name="asignaturas" type="ArrayList&lt;Asignatura&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="rut"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="agregarAsignaturas" returnType="boolean" visibility="public">
+          <Argument type="Asignatura" name="nuevaAsignatura"/>
+        </Method>
+        <Method name="desinscribirAsignatura" returnType="Boolean" visibility="public">
+          <Argument type="Asignatura" name="asignaturaADesinscribir"/>
+        </Method>
+        <Method name="aprobarAsignatura" returnType="Boolean" visibility="public">
+          <Argument type="Asignatura" name="asignaturaAprobada"/>
+        </Method>
+        <Method name="getAsignaturas" returnType="ArrayList&lt;Asignatura&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Asignatura" package="com.mycompany.avancecurricular" visibility="public" xPosition="457.0" yPosition="43.0">
+      <Fields>
+        <Field name="codigoId" type="String" visibility="private"/>
+        <Field name="nombreAsignatura" type="String" visibility="private"/>
+        <Field name="profesor" type="String" visibility="private"/>
+        <Field name="creditos" type="int" visibility="private"/>
+        <Field name="completada" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="codigoId"/>
+          <Argument type="String" name="nombreAsignatura"/>
+          <Argument type="String" name="profesor"/>
+          <Argument type="int" name="creditos"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCodigoId" returnType="String" visibility="public"/>
+        <Method name="marcarComoCompletada" returnType="void" visibility="public"/>
+        <Method name="isCompletada" returnType="boolean" visibility="public"/>
+        <Method name="getProfesor" returnType="String" visibility="public"/>
+        <Method name="getCreditos" returnType="int" visibility="public"/>
+        <Method name="getNombreAsignatura" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CSV" package="com.mycompany.avancecurricular" visibility="public" xPosition="1432.0" yPosition="1043.0">
+      <Fields>
+        <Field name="file" type="BufferedReader" visibility="private"/>
+        <Field name="currentLine" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="ruta"/>
+          <Argument type="String" name="archivo"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="firstLine" returnType="String" visibility="public"/>
+        <Method name="nextLine" returnType="String" visibility="public"/>
+        <Method name="get_csvField" returnType="String" visibility="public">
+          <Argument type="String" name="line"/>
+          <Argument type="int" name="field"/>
+        </Method>
+        <Method name="get_csvField" returnType="String" visibility="public">
+          <Argument type="int" name="field"/>
+          <Argument type="String" name="line"/>
+        </Method>
+        <Method name="close" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Excepciones" package="com.mycompany.avancecurricular" visibility="public" xPosition="46.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="main" package="com.mycompany.avancecurricular" visibility="public" xPosition="1021.0" yPosition="62.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="com.mycompany.avancecurricular" visibility="public" xPosition="1214.0" yPosition="578.0">
+      <Fields>
+        <Field name="alumno" type="Alumno" visibility="private"/>
+        <Field name="scanner" type="Scanner" visibility="private"/>
+        <Field name="ramosDisponibles" type="ArrayList&lt;Asignatura&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Alumno" name="alumno"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="mostrarMenuAlumno" returnType="void" visibility="public"/>
+        <Method name="cargarYMostrarRamos" returnType="void" visibility="private"/>
+        <Method name="buscarRamoPorCodigo" returnType="Asignatura" visibility="private">
+          <Argument type="String" name="codigo"/>
+        </Method>
+        <Method name="cargarListaDeRamosDisponiblesDesdeCSV" returnType="ArrayList&lt;Asignatura&gt;" visibility="private"/>
+        <Method name="mostrarRamosInscritos" returnType="void" visibility="private"/>
+        <Method name="inscribirRamo" returnType="void" visibility="private"/>
+        <Method name="desinscribirRamo" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="com.mycompany.avancecurricular" visibility="public" xPosition="1505.0" yPosition="211.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="rut" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="rut"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRut" returnType="int" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setRut" returnType="void" visibility="public">
+          <Argument type="int" name="rut"/>
+        </Method>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Profesor" package="com.mycompany.avancecurricular" visibility="public" xPosition="1692.0" yPosition="453.0">
+      <Fields>
+        <Field name="catedra" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="rut"/>
+          <Argument type="String" name="catedra"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCatedra" returnType="String" visibility="public"/>
+        <Method name="setCatedra" returnType="void" visibility="public">
+          <Argument type="String" name="catedra"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Sistema" package="com.mycompany.avancecurricular" visibility="public" xPosition="54.0" yPosition="709.0">
+      <Fields>
+        <Field name="alumnos" type="ArrayList&lt;Alumno&gt;" visibility="private"/>
+        <Field name="mapaAlumnosNombre" type="HashMap&lt;String, Alumno&gt;" visibility="private"/>
+        <Field name="mapaAlumnosRut" type="HashMap&lt;Integer, Alumno&gt;" visibility="private"/>
+        <Field name="ramosDisponibles" type="ArrayList&lt;Asignatura&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="agregarAlumno" returnType="void" visibility="public">
+          <Argument type="Alumno" name="nuevoAlumno"/>
+        </Method>
+        <Method name="eliminarAlumno" returnType="void" visibility="public">
+          <Argument type="Alumno" name="alumnoParaEliminar"/>
+        </Method>
+        <Method name="listarAlumnosNombre" returnType="void" visibility="public"/>
+        <Method name="obtenerAlumno" returnType="Alumno" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="obtenerAlumno" returnType="Alumno" visibility="public">
+          <Argument type="int" name="rut"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Ventana" package="com.mycompany.avancecurricular" visibility="public" xPosition="118.0" yPosition="1043.0">
+      <Fields>
+        <Field name="aboutMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="contentsMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="copyMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="cutMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="deleteMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="editMenu" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="exitMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="fileMenu" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="helpMenu" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="menuBar" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="openMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="pasteMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="saveAsMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="saveMenuItem" type="javax.swing.JMenuItem" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;                           void" visibility="private"/>
+        <Method name="exitMenuItemActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Ventana2" package="com.mycompany.avancecurricular" visibility="public" xPosition="770.0" yPosition="1053.0">
+      <Fields>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="txtNum" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;                           void" visibility="private"/>
+        <Method name="txtNumActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="mapaAlumnosRut" source="com.mycompany.avancecurricular.Sistema" target="com.mycompany.avancecurricular.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;Integer, Alumno&gt;"/>
+    <IsRelation name="is" source="com.mycompany.avancecurricular.Alumno" target="com.mycompany.avancecurricular.Persona"/>
+    <IsRelation name="is" source="com.mycompany.avancecurricular.Profesor" target="com.mycompany.avancecurricular.Persona"/>
+    <HasRelation name="alumno" source="com.mycompany.avancecurricular.Menu" target="com.mycompany.avancecurricular.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.mycompany.avancecurricular.Sistema" target="com.mycompany.avancecurricular.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="alumnos" source="com.mycompany.avancecurricular.Sistema" target="com.mycompany.avancecurricular.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Alumno&gt;"/>
+    <UseRelation source="com.mycompany.avancecurricular.Menu" target="com.mycompany.avancecurricular.Asignatura" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.mycompany.avancecurricular.Alumno" target="com.mycompany.avancecurricular.Asignatura" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="asignaturas" source="com.mycompany.avancecurricular.Alumno" target="com.mycompany.avancecurricular.Asignatura" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Asignatura&gt;"/>
+    <HasRelation name="ramosDisponibles" source="com.mycompany.avancecurricular.Menu" target="com.mycompany.avancecurricular.Asignatura" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Asignatura&gt;"/>
+    <HasRelation name="ramosDisponibles" source="com.mycompany.avancecurricular.Sistema" target="com.mycompany.avancecurricular.Asignatura" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Asignatura&gt;"/>
+    <HasRelation name="mapaAlumnosNombre" source="com.mycompany.avancecurricular.Sistema" target="com.mycompany.avancecurricular.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Alumno&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
