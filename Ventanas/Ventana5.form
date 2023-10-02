@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="jScrollPane3" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="183" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="txtAsignatura" min="-2" pref="337" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jScrollPane3" min="-2" pref="249" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="jLabel2" pref="34" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtAsignatura" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="36" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Inscribir asignatura"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="12" style="0"/>
+            </Property>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="FIS1001 - Fisica Electromagnetismo - Ana Sanchez - 4&#xa;FIS1002 - Fisica Moderna - Alejandro Perez - 4&#xa;FIS1003 - Fisica para Ingenieria - Oscar Vargas - 4&#xa;BIE1004 - Bienestar y Aprendizaje Universitario - Laura Martinez - 1&#xa;ING1005 - Introduccion a la Ingenieria Informatica - Juan Rodriguez - 2&#xa;ETI1006 - Etica Cristiana - Manuel Fernandez - 2&#xa;ING1007 - Ingles 1 - Karen Gonzalez - 1&#xa;ING1008 - Ingles 2 - Luis Martinez - 1&#xa;ING1009 - Ingles 4 - Laura Perez - 2&#xa;CAL1010 - Calculo Diferencial e Integral - Diego Perez - 3&#xa;ING1011 - Ingles 3 - Patricia Rodriguez - 3&#xa;ADM1012 - Administracion de Empresas - Juan Rodriguez - 2&#xa;ECO1013 - Economia y Finanzas - Eduardo Martinez - 3&#xa;FFM1014 - Formacion Fundamental 3 - Carmen Martinez - 2&#xa;OPT1015 - Optativo I - Patricia Perez - 1&#xa;TLT1016 - Taller de Liderazgo y Trabajo en Equipo - Laura Perez - 1&#xa;CAV1017 - Calculo en Varias Variables - Sofia Rodriguez - 3&#xa;EDC1018 - Estadistica Computacional - Paula Sanchez - 3&#xa;MET1019 - Metodos Numericos - Patricia Rodriguez - 3&#xa;AUT1020 - Automatas y Compiladores - Laura Sanchez - 3&#xa;BDA1021 - Base de Datos - Javier Rodriguez - 4&#xa;RDC1022 - Redes de Computadores - Diego Lopez - 3&#xa;TIS1023 - Taller Ingenieria de Software - Isabel Lopez - 3&#xa;TFP1024 - Taller de Formulacion de Proyectos Informaticos - Jose Lopez - 4&#xa;PRA1025 - Programacion Avanzada - Beatriz Gomez - 3&#xa;RSA1026 - Robotica y Sistemas Autonomos - Andres Martinez - 4&#xa;HSO1027 - Hardware y Sistemas Operativos - Carlos Gomez - 2&#xa;MDS1028 - Modelamiento de Software - Laura Gomez - 4&#xa;CPD1029 - Computacion Paralela y Distribuida - Jorge Rodriguez - 5&#xa;TEM1030 - Tecnologias Emergentes - Jorge Gomez - 4&#xa;EDU1031 - Experiencia del Usuario - Laura Sanchez - 2&#xa;API1032 - Administracion de Proyectos Informaticos - David Rodriguez - 4&#xa;NIE1033 - &quot;Negocios, Innovacion y Emprendimiento&quot; - Juan Perez - 3&#xa;STI1034 - Seminario de Titulo - Andrea Martinez - 3&#xa;LET1035 - &quot;Legislacion, Etica y Tecnologica&quot; - Manuel Gonzalez - 2&#xa;ANT1036 - Antropologia Cristiana - Carlos Perez - 2&#xa;FMI1037 - Fundamentos de Matematicas para Ingenieria - Maria Gonzalez - 3&#xa;FAL1038 - Fundamentos de Algoritmos - Carlos Lopez - 4&#xa;FPR1039 - Fundamentos de Programacion - Luis Fernandez - 3&#xa;DIC1040 - Desarrollo Integral y Comunicacion para Ingenieria - Paula Gomez - 2&#xa;AID1041 - Analisis Inteligente de Datos - Juan Carlos Martinez - 4&#xa;EDA1042 - Estructura de Datos - Laura Gonzalez - 3&#xa;CTE1043 - Ciencia y Tecnologia - Andrea Perez - 4&#xa;ISI1044 - Ingenieria de Software - Sergio Lopez - 4&#xa;IWM1045 - Ingenieria Web y Movil - Carolina Sanchez - 3&#xa;IRE1046 - Ingenieria de Requerimientos - Ana Gomez - 4&#xa;TBD1047 - Taller de Base de Datos - Pablo Rodriguez - 3&#xa;CIB1048 - Ciberseguridad - Raul Lopez - 5&#xa;OPT1049 - Optativo II - Carla Rodriguez - 2"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextArea()"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ingrese el nombre o identificador de la asignatura que desea inscribir"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAsignatura">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAsignaturaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ingresar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
