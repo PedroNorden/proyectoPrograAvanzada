@@ -5,13 +5,16 @@
  */
 package com.mycompany.avancecurricular;
 
+import com.mycompany.avancecurricular.Excepciones;
+import com.mycompany.avancecurricular.Excepciones.AlumnoNoEncontradoException;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import java.io.*;
 
 public class avanceCurricular {
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws Excepciones.OpcionInvalidaException, AlumnoNoEncontradoException, FileNotFoundException, IOException {
         Sistema sistema = new Sistema();
         Scanner scanner = new Scanner(System.in);
 
@@ -54,27 +57,37 @@ public class avanceCurricular {
 
                     Alumno alumnoMostrar = null;
 
-                    // Intentar buscar al alumno por rut o nombre
                     try {
                         int rut = Integer.parseInt(nombreO_RutAlumnoMostrar);
                         alumnoMostrar = sistema.obtenerAlumno(rut);
+                        if (alumnoMostrar == null) {
+                            throw new AlumnoNoEncontradoException("El alumno '" + nombreO_RutAlumnoMostrar + "' no se encuentra en el sistema.");
+                        }
                     } catch (NumberFormatException e) {
                         alumnoMostrar = sistema.obtenerAlumno(nombreO_RutAlumnoMostrar);
+                        if (alumnoMostrar == null) {
+                            throw new AlumnoNoEncontradoException("El alumno '" + nombreO_RutAlumnoMostrar + "' no se encuentra en el sistema.");
+                        }
+                    } catch (AlumnoNoEncontradoException e) {
+                        System.err.println(e.getMessage());
                     }
 
-                    if (alumnoMostrar == null) {
-                        System.out.println("El alumno '" + nombreO_RutAlumnoMostrar + "' no se encuentra en el sistema.");
-                    } else {
+                    if (alumnoMostrar != null) {
                         Menu menuAlumnoMostrar = new Menu(alumnoMostrar);
                         menuAlumnoMostrar.mostrarMenuAlumno();
                     }
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
+                    opcionPrincipal = 0; // Asigna 0 para salir del bucle while
                     break;
                 default:
-                    System.out.println("Opción inválida. Por favor, elija una opción válida.");
-                    break;
+                    try {
+                        throw new Excepciones().new OpcionInvalidaException("Opción inválida. Por favor, elija una opción válida.");
+                    } catch (Excepciones.OpcionInvalidaException e) {
+                        e.printStackTrace();
+                    }
+                break;
             }
         }
         List<String[]> datos = new ArrayList<>();
