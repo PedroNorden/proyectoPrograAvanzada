@@ -25,12 +25,6 @@ public class Sistema {
         mapaAlumnosRut.put(nuevoAlumno.getRut(), nuevoAlumno);
     }
 
-    public void eliminarAlumno(Alumno alumnoParaEliminar) {
-        alumnos.remove(alumnoParaEliminar);
-        mapaAlumnosNombre.remove(alumnoParaEliminar.getNombre());
-        mapaAlumnosRut.remove(alumnoParaEliminar.getRut());
-    }
-
     public void listarAlumnosNombre() {
         Set<String> nombres = mapaAlumnosNombre.keySet();
 
