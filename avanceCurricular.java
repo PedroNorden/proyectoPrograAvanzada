@@ -24,6 +24,15 @@ public class avanceCurricular {
             int rut = Integer.parseInt(alumnos.get_csvField(linea, 1));
             alumnoActual.setRut(rut);
             Alumno nuevoAlumno = (Alumno) alumnoActual;
+            
+            int campoIndex = 2;
+            String campo = alumnos.get_csvField(linea, campoIndex);
+            while(campo != null){
+                
+                nuevoAlumno.agregarAsignaturas(campo);
+                campoIndex++;
+                campo = alumnos.get_csvField(linea, campoIndex);
+            }
             sistema.agregarAlumno(nuevoAlumno);
             linea = alumnos.nextLine();
         }
